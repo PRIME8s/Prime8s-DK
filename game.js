@@ -11,7 +11,7 @@ let player = {
 };
 
 const gravity = 0.5;
-const jumpStrength = -10;
+const jumpStrength = -2;
 let keys = {};
 let barrels = [];
 let platforms = [
@@ -142,7 +142,7 @@ function update() {
     // If barrel reaches screen edge, fall down to next platform
     if (barrel.x > canvas.width || barrel.x < 0) {
       barrel.dx *= -1;
-      barrel.y += 40; // drop to next level
+      barrel.y += 20; // drop to next level
     }
 
     if (player.x < barrel.x + barrel.size &&
