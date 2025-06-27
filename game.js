@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 
 let player = {
   x: 50,
-  y: 500 - 37,
+  y: 400 - 37,
   width: 24,
   height: 37,
   dy: 0,
