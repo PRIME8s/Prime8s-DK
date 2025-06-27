@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 
 let player = {
   x: 80,
-  y: 600 - 37,
+  y: 550 - 37,
   width: 24,
   height: 37,
   dy: 0,
@@ -15,7 +15,7 @@ const jumpStrength = -10;
 let keys = {};
 let barrels = [];
 let platforms = [
-  { x: 80, y: 700, width: 480, height: 20 },
+  { x: 80, y: 600, width: 480, height: 20 },
   { x: 0, y: 500, width: 400, height: 10 },
   { x: 80, y: 400, width: 400, height: 10 },
   { x: 0, y: 300, width: 400, height: 10 },
