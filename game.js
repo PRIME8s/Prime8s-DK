@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 
 let player = {
   x: 80,
-  y: 500 - 37,
+  y: 450 - 37,
   width: 24,
   height: 37,
   dy: 0,
@@ -29,7 +29,7 @@ let ladders = [
 ];
 
 function spawnBarrel() {
-  barrels.push({ x: 0, y: 0, size: 15, dx: 2 });
+  barrels.push({ x: 0, y: 400, size: 15, dx: 2 });
 }
 
 setInterval(spawnBarrel, 2000);
