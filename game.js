@@ -2,12 +2,12 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
 let player = {
-  x: 80,
-  y: 450 - 37,
+  x: 50,
+  y: 600 - 37,
   width: 24,
   height: 37,
   dy: 0,
-  onGround: true
+  onGround: false
 };
 
 const gravity = 0.5;
@@ -15,7 +15,7 @@ const jumpStrength = -10;
 let keys = {};
 let barrels = [];
 let platforms = [
-  { x: 80, y: 600, width: 480, height: 10 },
+  { x: 0, y: 600, width: 480, height: 20 },
   { x: 0, y: 500, width: 400, height: 10 },
   { x: 80, y: 400, width: 400, height: 10 },
   { x: 0, y: 300, width: 400, height: 10 },
@@ -29,7 +29,7 @@ let ladders = [
 ];
 
 function spawnBarrel() {
-  barrels.push({ x: 0, y: 0, size: 15, dx: 2 });
+  barrels.push({ x: 0, y: 200, size: 15, dx: 2 });
 }
 
 setInterval(spawnBarrel, 2000);
@@ -70,22 +70,25 @@ function update() {
 
   player.y += player.dy;
 
-  player.onGround = true;
+  player.onGround = false;
   for (let plat of platforms) {
-    if (player.dy >= 0 &&
-        player.y + player.height <= plat.y &&
-        player.y + player.height + player.dy >= plat.y &&
-        player.x + player.width > plat.x &&
-        player.x < plat.x + plat.width) {
+    const nextY = player.y + player.dy;
+    const onPlatform = player.x + player.width > plat.x &&
+                       player.x < plat.x + plat.width &&
+                       player.y + player.height <= plat.y &&
+                       nextY + player.height >= plat.y;
+
+    if (onPlatform) {
       player.y = plat.y - player.height;
       player.dy = 0;
       player.onGround = true;
+      break;
     }
   }
 
   if (keys["Space"] && player.onGround) {
     player.dy = jumpStrength;
-    player.onGround = true;
+    player.onGround = false;
   }
 
   for (let barrel of barrels) {
@@ -111,7 +114,7 @@ function update() {
     // If barrel reaches screen edge, fall down to next platform
     if (barrel.x > canvas.width || barrel.x < 0) {
       barrel.dx *= -1;
-      barrel.y += 20; // drop to next level
+      barrel.y += 40; // drop to next level
     }
 
     if (player.x < barrel.x + barrel.size &&
