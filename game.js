@@ -3,11 +3,11 @@ const ctx = canvas.getContext("2d");
 
 let player = {
   x: 50,
-  y: 500 - 37,
+  y: 600 - 37,
   width: 24,
   height: 37,
   dy: 0,
-  onGround: true
+  onGround: false
 };
 
 const gravity = 0.5;
@@ -15,7 +15,7 @@ const jumpStrength = -10;
 let keys = {};
 let barrels = [];
 let platforms = [
-  { x: 0, y: 600, width: 480, height: 10 },
+  { x: 0, y: 600, width: 480, height: 20 },
   { x: 0, y: 500, width: 400, height: 10 },
   { x: 80, y: 400, width: 400, height: 10 },
   { x: 0, y: 300, width: 400, height: 10 },
@@ -70,19 +70,16 @@ function update() {
 
   player.y += player.dy;
 
-  player.onGround = true;
+  player.onGround = false;
   for (let plat of platforms) {
-    const nextY = player.y + player.dy;
-    const onPlatform = player.x + player.width > plat.x &&
-                       player.x < plat.x + plat.width &&
-                       player.y + player.height <= plat.y &&
-                       nextY + player.height >= plat.y;
-
-    if (onPlatform) {
+    if (player.dy >= 0 &&
+        player.y + player.height <= plat.y &&
+        player.y + player.height + player.dy >= plat.y &&
+        player.x + player.width > plat.x &&
+        player.x < plat.x + plat.width) {
       player.y = plat.y - player.height;
       player.dy = 0;
       player.onGround = true;
-      break;
     }
   }
 
