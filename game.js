@@ -11,7 +11,7 @@ let player = {
 };
 
 const gravity = 0.5;
-const jumpStrength = -10;
+const jumpStrength = -6;
 let keys = {};
 let barrels = [];
 let platforms = [
