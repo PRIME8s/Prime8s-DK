@@ -11,7 +11,7 @@ let player = {
 };
 
 const gravity = 0.5;
-const jumpStrength = -2;
+const jumpStrength = -5;
 let keys = {};
 let barrels = [];
 let platforms = [
@@ -25,7 +25,8 @@ let platforms = [
 let ladders = [
   { x: 200, y: 480, height: 100 },
   { x: 300, y: 380, height: 100 },
-  { x: 150, y: 280, height: 100 }
+  { x: 150, y: 280, height: 100 },
+  { x: 50, y: 80, height: 100 }
 ];
 
 function spawnBarrel() {
