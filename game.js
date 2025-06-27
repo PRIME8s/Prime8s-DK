@@ -2,7 +2,7 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
 let player = {
-  x: 50,
+  x: 80,
   y: 600 - 37,
   width: 24,
   height: 37,
@@ -15,11 +15,11 @@ const jumpStrength = -10;
 let keys = {};
 let barrels = [];
 let platforms = [
-  { x: 0, y: 600, width: 480, height: 20 },
+  { x: 80, y: 700, width: 480, height: 20 },
   { x: 0, y: 500, width: 400, height: 10 },
   { x: 80, y: 400, width: 400, height: 10 },
   { x: 0, y: 300, width: 400, height: 10 },
-  { x: 80, y: 200, width: 400, height: 10 },
+  { x: 0, y: 200, width: 400, height: 10 },
 ];
 
 let ladders = [
@@ -111,7 +111,7 @@ function update() {
     // If barrel reaches screen edge, fall down to next platform
     if (barrel.x > canvas.width || barrel.x < 0) {
       barrel.dx *= -1;
-      barrel.y += 40; // drop to next level
+      barrel.y += 20; // drop to next level
     }
 
     if (player.x < barrel.x + barrel.size &&
