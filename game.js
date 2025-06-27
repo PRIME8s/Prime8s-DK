@@ -7,7 +7,7 @@ let player = {
   width: 24,
   height: 37,
   dy: 0,
-  onGround: false
+  onGround: true
 };
 
 const gravity = 0.5;
@@ -29,7 +29,7 @@ let ladders = [
 ];
 
 function spawnBarrel() {
-  barrels.push({ x: 0, y: 400, size: 15, dx: 2 });
+  barrels.push({ x: 0, y: 0, size: 15, dx: 2 });
 }
 
 setInterval(spawnBarrel, 2000);
@@ -70,7 +70,7 @@ function update() {
 
   player.y += player.dy;
 
-  player.onGround = false;
+  player.onGround = true;
   for (let plat of platforms) {
     if (player.dy >= 0 &&
         player.y + player.height <= plat.y &&
@@ -85,7 +85,7 @@ function update() {
 
   if (keys["Space"] && player.onGround) {
     player.dy = jumpStrength;
-    player.onGround = false;
+    player.onGround = true;
   }
 
   for (let barrel of barrels) {
