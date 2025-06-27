@@ -15,7 +15,7 @@ const jumpStrength = -10;
 let keys = {};
 let barrels = [];
 let platforms = [
-  { x: 0, y: 700, width: 480, height: 30 },
+  { x: 0, y: 600, width: 480, height: 10 },
   { x: 0, y: 500, width: 400, height: 10 },
   { x: 80, y: 400, width: 400, height: 10 },
   { x: 0, y: 300, width: 400, height: 10 },
@@ -70,7 +70,7 @@ function update() {
 
   player.y += player.dy;
 
-  player.onGround = false;
+  player.onGround = true;
   for (let plat of platforms) {
     const nextY = player.y + player.dy;
     const onPlatform = player.x + player.width > plat.x &&
@@ -114,7 +114,7 @@ function update() {
     // If barrel reaches screen edge, fall down to next platform
     if (barrel.x > canvas.width || barrel.x < 0) {
       barrel.dx *= -1;
-      barrel.y += 40; // drop to next level
+      barrel.y += 20; // drop to next level
     }
 
     if (player.x < barrel.x + barrel.size &&
