@@ -26,7 +26,7 @@ let ladders = [
   { x: 200, y: 480, height: 100 },
   { x: 300, y: 380, height: 100 },
   { x: 150, y: 280, height: 100 },
-  { x: 50, y: 80, height: 100 }
+  { x: 350, y: 180, height: 100 }
 ];
 
 function spawnBarrel() {
