@@ -15,7 +15,7 @@ const jumpStrength = -10;
 let keys = {};
 let barrels = [];
 let platforms = [
-  { x: 0, y: 600, width: 480, height: 20 },
+  { x: 0, y: 600, width: 480, height: 10 },
   { x: 0, y: 500, width: 400, height: 10 },
   { x: 80, y: 400, width: 400, height: 10 },
   { x: 0, y: 300, width: 400, height: 10 },
